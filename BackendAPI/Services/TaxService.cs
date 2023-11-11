@@ -25,15 +25,15 @@ namespace BackendAPI.Services
 		public decimal CalculateTax()
 		{
 
-			var a = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(_taxtype);
-			a.TaxableAmount = _taxableamount;
-			var b = a.CalculateTax();
+			//var a = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(_taxtype);
+			//a.TaxableAmount = _taxableamount;
+			//var b = a.CalculateTax();
 
-			_dbContext.Add();
-			_dbContext.SaveChangesAsync();
+			//_dbContext.Add();
+			//_dbContext.SaveChangesAsync();
 
 			// Inject EF to update the Database Here
-			return b;
+			return 1000; //  b;
 		}
 	}
 }
