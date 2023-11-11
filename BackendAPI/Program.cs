@@ -1,4 +1,6 @@
 
+using BackendAPI.Services;
+
 namespace BackendAPI
 {
 	public class Program
@@ -6,6 +8,7 @@ namespace BackendAPI
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+			builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for Tax Service
 
 			// Add services to the container.
 
@@ -24,7 +27,6 @@ namespace BackendAPI
 			}
 
 			app.UseAuthorization();
-
 
 			app.MapControllers();
 
