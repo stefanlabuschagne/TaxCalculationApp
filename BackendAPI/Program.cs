@@ -1,6 +1,12 @@
 
+using BackendAPI.Data;
 using BackendAPI.Models.TaxCalculation;
 using BackendAPI.Services;
+using BackendAPI.Services.Factory;
+using FluentAssertions.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace BackendAPI
 {
@@ -9,9 +15,13 @@ namespace BackendAPI
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
-			builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for SQL Database Service
 
-			builder.Services.AddSingleton<ITaxCalculation, FlatRate>(); // DI for Tax Service
+			builder.Services.AddDbContext<TaxDbContext>(options =>
+				options.UseSqlServer(
+					builder.Configuration.GetConnectionString("TaxDatabaseConnectionstring")));
+
+			builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for SQL Database Service
+			builder.Services.AddSingleton<ITaxCalculatorFactory, TaxCalculatorFactory>(); // DI for Tax Factory Service
 
 			// Add services to the container.
 

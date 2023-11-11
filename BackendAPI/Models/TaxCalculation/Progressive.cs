@@ -2,11 +2,11 @@
 
 public class Progressive : ITaxCalculation
 {
-  private decimal _taxableamount;
+    private decimal _taxableamount;
 
-	decimal ITaxCalculation.TaxableAmount { set => _taxableamount = value; }
+    decimal ITaxCalculation.TaxableAmount { set => _taxableamount = value; }
 
-	public decimal CalculateTax()
+    public decimal CalculateTax()
     {
         return _taxableamount >= 372951 ?
             _taxableamount - 372950 * 0.35m + 108216 :

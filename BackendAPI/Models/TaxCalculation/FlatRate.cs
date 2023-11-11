@@ -4,9 +4,9 @@
     {
         private decimal _taxableamount;
 
-		decimal ITaxCalculation.TaxableAmount { set => _taxableamount = value; }
+        decimal ITaxCalculation.TaxableAmount { set => _taxableamount = value; }
 
-		public decimal CalculateTax()
+        public decimal CalculateTax()
         {
             return _taxableamount * 0.175m;
         }
