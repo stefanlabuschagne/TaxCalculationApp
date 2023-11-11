@@ -1,4 +1,5 @@
 
+using BackendAPI.Models.TaxCalculation;
 using BackendAPI.Services;
 
 namespace BackendAPI
@@ -8,7 +9,9 @@ namespace BackendAPI
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
-			builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for Tax Service
+			builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for SQL Database Service
+
+			builder.Services.AddSingleton<ITaxCalculation, FlatRate>(); // DI for Tax Service
 
 			// Add services to the container.
 

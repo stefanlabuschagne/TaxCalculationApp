@@ -1,10 +1,11 @@
 ﻿using BackendAPI.Models.DTO.Request;
+using BackendAPI.Models.DTO.Response;
 using BackendAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendAPI.Controllers
 {
-    [ApiController]
+  [ApiController]
 	[Route("[controller]")]
 	public class TaxCalculationController : Controller
 	{
@@ -17,12 +18,11 @@ namespace BackendAPI.Controllers
 			_taxService = taxservice;
 		}
 
-
 		[HttpPost(Name = "CalculateTax")]
-		public IEnumerable<TaxCalculation> HttpPost()
+		public TaxCalcultionResponse HttpPost([FromBody] TaxCalculationRequest taxCalculationRequest)
 		{
 			// call the Repository Service that was injected into the 
-			_taxService.CalculateTax();
+			return _taxService.CalculateTax();
 
 		}
 	}
