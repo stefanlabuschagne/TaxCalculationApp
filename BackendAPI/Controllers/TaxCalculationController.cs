@@ -1,4 +1,4 @@
-﻿using BackendAPI.DTO.Request;
+﻿using BackendAPI.Models.DTO.Request;
 using BackendAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 

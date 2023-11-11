@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Response\" />
+    <Folder Include="Models\DTO\Response\" />
   </ItemGroup>
 
 </Project>
