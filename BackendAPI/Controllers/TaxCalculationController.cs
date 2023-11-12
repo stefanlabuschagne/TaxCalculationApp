@@ -28,7 +28,7 @@ namespace BackendAPI.Controllers
 			if (taxCalculationRequest == null)  
 				return new BadRequestResult(); 
 
-			_taxService.CalculateTax(taxCalculationRequest.Amount,taxCalculationRequest.PostalCode);
+			_taxService.CalculateTax(taxCalculationRequest.TaxableIncome,taxCalculationRequest.PostalCode);
 
 			//_unitofwork.TaxRecord.Add(new Domain.Entities.TaxRecord() { TaxableAmount=100000, TaxType="Progressive" });
 

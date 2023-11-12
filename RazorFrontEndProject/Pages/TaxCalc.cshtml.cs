@@ -2,11 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorFrontEndProject.Models;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text;
+using RazorFrontEndProject.Services;
 
 namespace RazorFrontEndProject.Pages
 {
     public class TaxCalcModel : PageModel
     {
+
       public void OnGet()
       {
 
@@ -18,9 +22,7 @@ namespace RazorFrontEndProject.Pages
       // Logic for handling POST requests
       // Access posted values using the Request.Form collection or model binding
 
-
       // Call API to update the database
-      // Create an instance of HttpClient
       using (HttpClient client = new HttpClient())
       {
         // Set the base address of the API
@@ -28,24 +30,32 @@ namespace RazorFrontEndProject.Pages
 
         try
         {
-          // Make a GET request
-          HttpResponseMessage response = await client.PostAsync("/CalculateTax", TaxInfoModel);
+          var taxInfoModelJson = new StringContent(
+            JsonSerializer.Serialize(TaxInfoModel),
+            Encoding.UTF8,
+            "application/json");
+
+          // Make a POST request
+          HttpResponseMessage response = client.PostAsync("/TaxCalculation", taxInfoModelJson).Result;
 
           // Check if the response is successful
           if (response.IsSuccessStatusCode)
           {
             // Read and print the response content
-            string result = await response.Content.ReadAsStringAsync();
+            string result = response.Content.ReadAsStringAsync().Result;
             Console.WriteLine(result);
+            //return true;
           }
           else
           {
             Console.WriteLine($"Error: {response.StatusCode}, {response.ReasonPhrase}");
+            //return false;
           }
         }
         catch (HttpRequestException e)
         {
           Console.WriteLine($"Request error: {e.Message}");
+          //return false;
         }
       }
 

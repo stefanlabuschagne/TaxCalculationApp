@@ -4,7 +4,7 @@ namespace BackendAPI.Models.DTO.Request
 {
   public class TaxCalculationRequest
   {
-    public decimal Amount { get; set; }
+    public decimal TaxableIncome { get; set; }
 
     public string PostalCode { get; set; }
   }
