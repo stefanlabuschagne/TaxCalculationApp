@@ -18,9 +18,9 @@ namespace BackendAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TimeCalculated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TaxableAmount = table.Column<double>(type: "float", nullable: false),
+                    TaxableAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TaxType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TaxCalculated = table.Column<double>(type: "float", nullable: false)
+                    TaxCalculated = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {

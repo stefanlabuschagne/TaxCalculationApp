@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendAPI.Migrations
 {
     [DbContext(typeof(TaxDbContext))]
-    [Migration("20231112030325_CreatingDb")]
+    [Migration("20231112122528_CreatingDb")]
     partial class CreatingDb
     {
         /// <inheritdoc />
@@ -33,15 +33,15 @@ namespace BackendAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("TaxCalculated")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TaxCalculated")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TaxType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("TaxableAmount")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TaxableAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("TimeCalculated")
                         .HasColumnType("datetime2");

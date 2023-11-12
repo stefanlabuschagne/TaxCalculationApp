@@ -16,28 +16,40 @@ namespace BackendAPI.Services
 		private ITaxCalculatorFactory _taxCalculatorFactory;
 		private TaxDbContext _dbContext;
 
-		public TaxService(TaxDbContext dbc, ITaxCalculatorFactory tcf)
+		public TaxService(TaxDbContext dbContext, ITaxCalculatorFactory taxCalculatorFactory)
 		{
-			_dbContext = dbc;
-			_taxCalculatorFactory = tcf;			
+			_dbContext = dbContext;
+			_taxCalculatorFactory = taxCalculatorFactory;			
 		}
 
-		public decimal CalculateTax()
+		public bool CalculateTax()
 		{
-			var z = (BackendAPI.Models.DTO.Request.TaxType) 1;
+			var TaxType = (BackendAPI.Models.DTO.Request.TaxType) 1;
+			decimal TaxableAmount = 100000000;
 
-			var a = _taxCalculatorFactory.CalcuateTaxRateBasedOnType( z );
-			a.TaxableAmount = 100000000; // _taxableamount;
-			var b = a.CalculateTax();
+			var TaxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(TaxType);
 
-			//_dbContext.Add();
-			//_dbContext.SaveChangesAsync();
+			TaxCalculatorObjectFromFactory.TaxableAmount = TaxableAmount;
+			decimal CalculatedTax = TaxCalculatorObjectFromFactory.CalculateTax();
 
-			// Inject EF to update the Database Here
+			try
+			{
+				_dbContext.TaxRecord.Add(new Domain.Entities.TaxRecord()
+				{
+					TaxableAmount = TaxableAmount,
+					TaxCalculated = CalculatedTax,
+					TimeCalculated = DateTime.Now,
+					TaxType = "Progressive"
+				});
+				_dbContext.SaveChanges();
 
-			decimal d = 1000;
-
-			return d; //  b;
+			}
+			catch (Exception ex) 
+			{
+				var X = ex.Message;
+				return false;
+			}
+			return true;
 		}
 	}
 }

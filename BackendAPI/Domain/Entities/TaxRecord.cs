@@ -10,10 +10,10 @@ namespace BackendAPI.Domain.Entities
 
 		public DateTime TimeCalculated { get; set; }
 
-		public double TaxableAmount { get; set; }
+		public decimal TaxableAmount { get; set; }
 
 		public string TaxType { get; set; }
 
-		public double TaxCalculated { get; set; }
+		public decimal TaxCalculated { get; set; }
 	}
 }
