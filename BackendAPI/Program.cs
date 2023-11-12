@@ -1,4 +1,6 @@
 using BackendAPI.Data.Context;
+using BackendAPI.Data.Implementation;
+using BackendAPI.Domain.Repository;
 using BackendAPI.Services;
 using BackendAPI.Services.Factory;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,8 @@ namespace BackendAPI
 			builder.Services.AddDbContext<TaxDbContext>(options =>
 				options.UseSqlServer(
 					builder.Configuration.GetConnectionString("TaxDatabaseConnectionstring")));
+
+			builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 			//builder.Services.AddSingleton<ITaxCalculatorFactory, TaxCalculatorFactory>(); // DI for Tax Factory Service
 			//builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for SQL Database Service
