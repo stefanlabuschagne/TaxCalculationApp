@@ -12,20 +12,30 @@ namespace BackendAPI.Controllers
 	public class TaxCalculationController : Controller
 	{
 		private readonly ILogger<TaxCalculationController> _logger;
-		// private readonly ITaxService _taxService;
+		private readonly ITaxService _taxService;
 		private readonly IUnitOfWork _unitofwork;
 
-		public TaxCalculationController(ILogger<TaxCalculationController> logger, IUnitOfWork unitOfWork)
+		public TaxCalculationController(ILogger<TaxCalculationController> logger, IUnitOfWork unitOfWork, ITaxService taxService)
 		{
 			_logger = logger;
 			_unitofwork = unitOfWork;
+			_taxService = taxService;
 		}
 
 		[HttpPost(Name = "CalculateTax")]
 		public TaxCalcultionResponse HttpPost([FromBody] TaxCalculationRequest taxCalculationRequest)
 		{
-			_unitofwork.TaxRecord.Add(new Domain.Entities.TaxRecord() { TaxableAmount=1000 });
+			_taxService.CalculateTax();
+			// Calculate Tax
+			//_unitofwork.TaxRecord.Add(new Domain.Entities.TaxRecord() { TaxableAmount=100000, TaxType="Progressive" });
 			return new TaxCalcultionResponse(); 
+		}
+
+		[HttpGet(Name = "GetAllRecords")]
+		public List<TaxCalcultionResponse> HttpGet()
+		{
+			_unitofwork.TaxRecord.GetAll();
+			return new List<TaxCalcultionResponse>();
 		}
 	}
 }

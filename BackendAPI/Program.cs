@@ -25,8 +25,10 @@ namespace BackendAPI
 
 			builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-			//builder.Services.AddSingleton<ITaxCalculatorFactory, TaxCalculatorFactory>(); // DI for Tax Factory Service
-			//builder.Services.AddSingleton<ITaxService, TaxService>(); // DI for SQL Database Service
+			builder.Services.AddSingleton<ITaxCalculatorFactory, TaxCalculatorFactory>(); // DI for Tax Factory Service
+
+			// AddTransient did the thing with 
+			builder.Services.AddTransient<ITaxService, TaxService>(); // DI for SQL Database Service
 			//																													// builder.Services.AddScoped(typeof(ITaxService), typeof(ITaxService));
 
 

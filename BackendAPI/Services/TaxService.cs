@@ -8,25 +8,27 @@ namespace BackendAPI.Services
 {
     // Repository pattern
     // for the thin controller
-    public class TaxService : ITaxService
+  public class TaxService : ITaxService
 	{
-
 		public decimal _taxableamount;
-		public string _taxtype;
-		public ITaxCalculatorFactory _taxCalculatorFactory;
-		public TaxDbContext _dbContext;
+		public int _taxtype;
 
-		public TaxService()
+		private ITaxCalculatorFactory _taxCalculatorFactory;
+		private TaxDbContext _dbContext;
+
+		public TaxService(TaxDbContext dbc, ITaxCalculatorFactory tcf)
 		{
-			// _dbContext = new TaxDbContext();
+			_dbContext = dbc;
+			_taxCalculatorFactory = tcf;			
 		}
 
 		public decimal CalculateTax()
 		{
+			var z = (BackendAPI.Models.DTO.Request.TaxType) 1;
 
-			//var a = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(_taxtype);
-			//a.TaxableAmount = _taxableamount;
-			//var b = a.CalculateTax();
+			var a = _taxCalculatorFactory.CalcuateTaxRateBasedOnType( z );
+			a.TaxableAmount = 100000000; // _taxableamount;
+			var b = a.CalculateTax();
 
 			//_dbContext.Add();
 			//_dbContext.SaveChangesAsync();

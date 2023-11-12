@@ -11,8 +11,8 @@ namespace BackendAPI.Models.DTO.Request
 
     public enum TaxType
     {
-        Flatrate,
-        FlatValue,
-        Progressive
+        Flatrate = 0 ,
+        FlatValue = 1,
+        Progressive =2 
     }
 }

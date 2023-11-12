@@ -8,22 +8,24 @@ namespace BackendAPI.Data.Implementation
 
 		TaxDbContext _context;
 
-		public UnitOfWork(TaxDbContext context) 
-		{ 
+		public UnitOfWork(TaxDbContext context)
+		{
 			_context = context;
+			// List of all repositories implemented in the unit of work
 			TaxRecord = new TaxRecordRepository(context);
 		}
 
 		public ITaxRecordRepository TaxRecord { get; private set; }
 
-		public void Dispose()
-		{
-			_context.Dispose();
-		}
-
 		public int Save()
 		{
 			return _context.SaveChanges();
+		}
+
+		public void Dispose()
+		{
+			_context.Dispose();
+
 		}
 	}
 }

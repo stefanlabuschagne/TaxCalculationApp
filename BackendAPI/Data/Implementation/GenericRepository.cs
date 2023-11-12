@@ -15,9 +15,9 @@ namespace BackendAPI.Data.Implementation
 			_context = context;
 		}
 
-		public void Add(T taxRecord)
+		public void Add(T entity)
 		{
-			_context.Set<T>().Add(taxRecord);
+			_context.Set<T>().Add(entity);
 		}
 
 		public IEnumerable<T> GetAll()
