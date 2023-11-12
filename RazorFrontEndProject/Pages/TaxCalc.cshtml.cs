@@ -20,9 +20,6 @@ namespace RazorFrontEndProject.Pages
 
       // Call API to update the database
 
-
-
-
     }
   }
 }
