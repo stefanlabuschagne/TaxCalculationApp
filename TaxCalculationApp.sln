@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendAPI", "BackendAPI\BackendAPI.csproj", "{91678468-7B4E-4F16-8DB5-8BF483535019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APINunitTest", "APINunitTest\APINunitTest.csproj", "{2C70AFFF-7792-4AF1-90AE-6E9FD7117E5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APINunitTest", "APINunitTest\APINunitTest.csproj", "{2C70AFFF-7792-4AF1-90AE-6E9FD7117E5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorFrontEndProject", "RazorFrontEndProject\RazorFrontEndProject.csproj", "{3EA46A33-3FB9-41B0-8A82-3067E4B5FB6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2C70AFFF-7792-4AF1-90AE-6E9FD7117E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C70AFFF-7792-4AF1-90AE-6E9FD7117E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C70AFFF-7792-4AF1-90AE-6E9FD7117E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA46A33-3FB9-41B0-8A82-3067E4B5FB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA46A33-3FB9-41B0-8A82-3067E4B5FB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA46A33-3FB9-41B0-8A82-3067E4B5FB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA46A33-3FB9-41B0-8A82-3067E4B5FB6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

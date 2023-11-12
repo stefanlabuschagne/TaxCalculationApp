@@ -31,7 +31,6 @@ namespace BackendAPI
 			builder.Services.AddTransient<ITaxService, TaxService>(); // DI for SQL Database Service
 			//																													// builder.Services.AddScoped(typeof(ITaxService), typeof(ITaxService));
 
-
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -42,9 +41,7 @@ namespace BackendAPI
 			}
 
 			app.UseAuthorization();
-
 			app.MapControllers();
-
 			app.Run();
 		}
 	}

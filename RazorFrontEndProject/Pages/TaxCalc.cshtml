@@ -1,0 +1,17 @@
+﻿@page
+@model RazorFrontEndProject.Pages.TaxCalcModel
+@{
+}
+<h1>Hello World</h1>
+
+<table><
+<form method="post">
+
+  <tr><td>Postal Code:</td><td>< <input type="text" name="PostalCode" /></td></tr>
+ 
+  <tr><td>Annual Taxable Income:</td><td>< <input type="number" name="TaxableIncome" /></td></tr>
+  
+  <!-- Add other input fields as needed -->
+  <button type="submit" asp-page-handler="Submit" >Submit</button>
+</form>
+</table>
