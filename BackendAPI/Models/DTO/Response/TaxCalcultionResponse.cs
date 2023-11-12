@@ -1,11 +1,11 @@
 ﻿namespace BackendAPI.Models.DTO.Response
 {
-	public class TaxCalcultionResponse
+	public class TaxCalculationResponse
 	{
-		string Sucsess { get; set; }
+		public required string Sucsess { get; set; }
 
-		string ResponseMessage { get; set; }
+		public required string ResponseMessage { get; set; }
 
-		decimal TaxAmountDue{ get; set; }		
+		public decimal TaxAmountDue { get; set; }
 	}
 }

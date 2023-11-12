@@ -6,7 +6,8 @@ namespace BackendAPI.Data.Implementation
 {
 	public class TaxRecordRepository : GenericRepository<TaxRecord>, ITaxRecordRepository
 	{
-		public TaxRecordRepository(TaxDbContext context) : base(context)
+		public TaxRecordRepository(TaxDbContext context)
+            : base(context)
 		{
 		}
 	}

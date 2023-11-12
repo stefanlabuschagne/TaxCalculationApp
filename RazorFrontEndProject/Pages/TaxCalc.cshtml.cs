@@ -19,6 +19,14 @@ namespace RazorFrontEndProject.Pages
 
     public async void OnPost(TaxInformation TaxInfoModel)
     {
+
+      if (!ModelState.IsValid)
+        return;
+
+
+
+
+
       // Logic for handling POST requests
       // Access posted values using the Request.Form collection or model binding
 

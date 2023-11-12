@@ -1,8 +1,5 @@
 ﻿using BackendAPI.Data.Context;
 using BackendAPI.Services.Factory;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 namespace BackendAPI.Services
 {
@@ -16,34 +13,33 @@ namespace BackendAPI.Services
 		public TaxService(TaxDbContext dbContext, ITaxCalculatorFactory taxCalculatorFactory)
 		{
 			_dbContext = dbContext;
-			_taxCalculatorFactory = taxCalculatorFactory;			
+			_taxCalculatorFactory = taxCalculatorFactory;
 		}
 
-		public bool CalculateTax(decimal TaxableAmount, string PostalCode)
+		public bool CalculateTax(decimal taxableAmount, string postalCode)
 		{
+			var taxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(postalCode);
 
-			var TaxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(PostalCode);
-
-			TaxCalculatorObjectFromFactory.TaxableAmount = TaxableAmount;
-			decimal CalculatedTax = TaxCalculatorObjectFromFactory.CalculateTax();
+			taxCalculatorObjectFromFactory.TaxableAmount = taxableAmount;
+			decimal calculatedTax = taxCalculatorObjectFromFactory.CalculateTax();
 
 			try
 			{
 				_dbContext.TaxRecord.Add(new Domain.Entities.TaxRecord()
 				{
-					TaxableAmount = TaxableAmount,
-					TaxCalculated = CalculatedTax,
+					TaxableAmount = taxableAmount,
+					TaxCalculated = calculatedTax,
 					TimeCalculated = DateTime.Now,
-					PostalCode = PostalCode 
-				}); ;
+					PostalCode = postalCode,
+				});
 				_dbContext.SaveChanges();
-
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
-				var X = ex.Message;
+				var x = ex.Message;
 				return false;
 			}
+
 			return true;
 		}
 	}

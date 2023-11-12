@@ -11,7 +11,7 @@ public class Progressive : ITaxCalculation
     public decimal CalculateTax()
     {
       if (_taxableamount >= 372951)
-        return _taxableamount - 372950 * 0.35m + 108216;
+        return ((_taxableamount - 372950) * 0.35m) + 108216;
 
       if (_taxableamount >= 171551)
         return _taxableamount - (_taxableamount - 171550) * 0.33m + 41754;
@@ -25,7 +25,7 @@ public class Progressive : ITaxCalculation
       if (_taxableamount >= 8351)
         return _taxableamount - (_taxableamount - 8350) * 0.15m + 835;
 
-      if(_taxableamount >= 0)
+      if (_taxableamount >= 0)
         return _taxableamount - _taxableamount * 0.10m + 0;
 
       return 0;

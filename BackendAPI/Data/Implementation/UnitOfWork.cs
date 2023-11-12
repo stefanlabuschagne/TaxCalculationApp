@@ -5,12 +5,12 @@ namespace BackendAPI.Data.Implementation
 {
 	public class UnitOfWork : IUnitOfWork
 	{
-
 		TaxDbContext _context;
 
 		public UnitOfWork(TaxDbContext context)
 		{
 			_context = context;
+
 			// List of all repositories implemented in the unit of work
 			TaxRecord = new TaxRecordRepository(context);
 		}
@@ -25,7 +25,6 @@ namespace BackendAPI.Data.Implementation
 		public void Dispose()
 		{
 			_context.Dispose();
-
 		}
 	}
 }

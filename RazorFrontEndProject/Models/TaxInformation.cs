@@ -13,6 +13,7 @@ namespace RazorFrontEndProject.Models
     [BindProperty]
     [Required]
     [DefaultValue(0)]
+    [Range(0,int.MaxValue,ErrorMessage ="Enter a positive value")]
     public decimal TaxableIncome { get; set; }
   }
 }

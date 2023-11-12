@@ -5,7 +5,8 @@ using BackendAPI.Domain.Repository;
 // Implementation of the Generic Repository
 namespace BackendAPI.Data.Implementation
 {
-	public class GenericRepository<T> : IGenericRepository<T> where T : class
+	public class GenericRepository<T> : IGenericRepository<T>
+	    where T : class
 	{
 		// Inject Context
 		private readonly TaxDbContext _context;

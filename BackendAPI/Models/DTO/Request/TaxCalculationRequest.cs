@@ -6,6 +6,6 @@ namespace BackendAPI.Models.DTO.Request
   {
     public decimal TaxableIncome { get; set; }
 
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
   }
 }

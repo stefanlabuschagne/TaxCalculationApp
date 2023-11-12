@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BackendAPI
 {
-    public class Program
+	public class Program
 	{
 		public static void Main(string[] args)
 		{
@@ -15,7 +15,6 @@ namespace BackendAPI
 
 			// Add services to the container.
 			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
@@ -24,12 +23,8 @@ namespace BackendAPI
 					builder.Configuration.GetConnectionString("TaxDatabaseConnectionstring")));
 
 			builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-
-			builder.Services.AddSingleton<ITaxCalculatorFactory, TaxCalculatorFactory>(); // DI for Tax Factory Service
-
-			// AddTransient did the thing with 
-			builder.Services.AddTransient<ITaxService, TaxService>(); // DI for SQL Database Service
-			//																													// builder.Services.AddScoped(typeof(ITaxService), typeof(ITaxService));
+			builder.Services.AddSingleton<ITaxCalculatorFactory, TaxCalculatorFactory>();
+			builder.Services.AddTransient<ITaxService, TaxService>();
 
 			var app = builder.Build();
 

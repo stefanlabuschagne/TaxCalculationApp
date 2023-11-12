@@ -1,8 +1,9 @@
 ﻿namespace BackendAPI.Models.TaxCalculation
 {
-    public interface ITaxCalculation
-    {
-        public decimal TaxableAmount { set; }
-        public decimal CalculateTax();
-    }
+  public interface ITaxCalculation
+  {
+    public decimal TaxableAmount { set; }
+
+    public decimal CalculateTax();
+  }
 }
