@@ -8,12 +8,12 @@ namespace RazorFrontEndProject.Models
   {
     [BindProperty]
     [Required]
-    public string PostalCode { get; set; }
+    public required string PostalCode { get; set; }
 
     [BindProperty]
     [Required]
     [DefaultValue(0)]
-    [Range(0,int.MaxValue,ErrorMessage ="Enter a positive value")]
+    [Range(0, int.MaxValue, ErrorMessage ="Enter a positive value")]
     public decimal TaxableIncome { get; set; }
   }
 }

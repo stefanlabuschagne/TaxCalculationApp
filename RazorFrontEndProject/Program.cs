@@ -1,3 +1,5 @@
+using RazorFrontEndProject.Services;
+
 namespace RazorFrontEndProject
 {
 	public class Program
@@ -9,13 +11,14 @@ namespace RazorFrontEndProject
 			// Add services to the container.
 			builder.Services.AddRazorPages();
 
+			builder.Services.AddSingleton<IApiService, ApiService>();
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
-			{
 				app.UseExceptionHandler("/Error");
-			}
+
 			app.UseStaticFiles();
 
 			app.UseRouting();

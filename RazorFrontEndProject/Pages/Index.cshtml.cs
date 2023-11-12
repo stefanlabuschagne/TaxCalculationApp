@@ -14,7 +14,6 @@ namespace RazorFrontEndProject.Pages
 
 		public void OnGet()
 		{
-
 		}
 	}
 }
