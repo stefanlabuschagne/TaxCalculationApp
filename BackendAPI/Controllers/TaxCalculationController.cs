@@ -27,7 +27,11 @@ namespace BackendAPI.Controllers
 				return new BadRequestResult();
 
 			if (_taxService.CalculateTax(taxCalculationRequest.TaxableIncome, taxCalculationRequest.PostalCode))
-				return new OkResult();
+				return new OkObjectResult(new TaxCalculationResponse()
+				{
+					Sucsess = "True",
+					ResponseMessage = "Your tax was calculated and added to the database",
+				});
 
 			return new BadRequestResult();
 		}

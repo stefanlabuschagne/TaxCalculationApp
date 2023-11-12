@@ -1,17 +1,17 @@
 ﻿namespace BackendAPI.Models.TaxCalculation
 {
-    public class FlatValue : ITaxCalculation
+  public class FlatValue : ITaxCalculation
+  {
+    private decimal _taxableamount;
+
+    public decimal CalculateTax()
     {
-        private decimal _taxableamount;
+      if (_taxableamount < 200000)
+        return _taxableamount * 0.05m;
 
-        public decimal CalculateTax()
-        {
-          if (_taxableamount < 200000)
-            return _taxableamount * 0.05m;
-
-          return 10000;
-        }
-
-        public decimal TaxableAmount { set => _taxableamount = value; }
+      return 10000;
     }
+
+    public decimal TaxableAmount { set => _taxableamount = value; }
+  }
 }
