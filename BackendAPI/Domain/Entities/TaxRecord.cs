@@ -12,7 +12,7 @@ namespace BackendAPI.Domain.Entities
 
 		public decimal TaxableAmount { get; set; }
 
-		public string TaxType { get; set; }
+		public string PostalCode { get; set; }
 
 		public decimal TaxCalculated { get; set; }
 	}

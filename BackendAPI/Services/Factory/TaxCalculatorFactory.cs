@@ -5,17 +5,21 @@ namespace BackendAPI.Services.Factory
 {
     public class TaxCalculatorFactory : ITaxCalculatorFactory
 	{
-		private Dictionary<TaxType, Func<ITaxCalculation>> _entityTypeMapper;
+
+		public string[] PostalCodes { get; set; } = new string[] { "7441", "A100", "7000", "1000" };
+
+		private Dictionary<string, Func<ITaxCalculation>> _entityTypeMapper;
 
 		public TaxCalculatorFactory()
 		{
-			_entityTypeMapper = new Dictionary<TaxType, Func<ITaxCalculation>>();
-			_entityTypeMapper.Add(TaxType.Progressive, () => { return new Progressive(); });
-			_entityTypeMapper.Add(TaxType.Flatrate, () => { return new FlatRate(); });
-			_entityTypeMapper.Add(TaxType.FlatValue, () => { return new FlatValue(); });
+			_entityTypeMapper = new Dictionary<string, Func<ITaxCalculation>>();
+				_entityTypeMapper.Add(PostalCodes[0], () => { return new Progressive(); });
+				_entityTypeMapper.Add(PostalCodes[1], () => { return new FlatValue(); });
+				_entityTypeMapper.Add(PostalCodes[2], () => { return new FlatRate(); });
+				_entityTypeMapper.Add(PostalCodes[3], () => { return new Progressive(); });
 		}
 
-		public ITaxCalculation CalcuateTaxRateBasedOnType(TaxType entityType)
+		public ITaxCalculation CalcuateTaxRateBasedOnType(string entityType)
 		{
 			return _entityTypeMapper[entityType]();
 		}

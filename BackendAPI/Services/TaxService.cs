@@ -6,13 +6,10 @@ using System.Data;
 
 namespace BackendAPI.Services
 {
-    // Repository pattern
-    // for the thin controller
+  // Repository pattern
+  // for the thin controller
   public class TaxService : ITaxService
 	{
-		public decimal _taxableamount;
-		public int _taxtype;
-
 		private ITaxCalculatorFactory _taxCalculatorFactory;
 		private TaxDbContext _dbContext;
 
@@ -22,12 +19,10 @@ namespace BackendAPI.Services
 			_taxCalculatorFactory = taxCalculatorFactory;			
 		}
 
-		public bool CalculateTax()
+		public bool CalculateTax(decimal TaxableAmount, string PostalCode)
 		{
-			var TaxType = (BackendAPI.Models.DTO.Request.TaxType) 1;
-			decimal TaxableAmount = 100000000;
 
-			var TaxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(TaxType);
+			var TaxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType(PostalCode);
 
 			TaxCalculatorObjectFromFactory.TaxableAmount = TaxableAmount;
 			decimal CalculatedTax = TaxCalculatorObjectFromFactory.CalculateTax();
@@ -39,8 +34,8 @@ namespace BackendAPI.Services
 					TaxableAmount = TaxableAmount,
 					TaxCalculated = CalculatedTax,
 					TimeCalculated = DateTime.Now,
-					TaxType = "Progressive"
-				});
+					PostalCode = PostalCode 
+				}); ;
 				_dbContext.SaveChanges();
 
 			}

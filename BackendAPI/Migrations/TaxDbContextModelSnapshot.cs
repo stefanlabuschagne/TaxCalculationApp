@@ -30,12 +30,12 @@ namespace BackendAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("TaxCalculated")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("TaxType")
+                    b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TaxCalculated")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TaxableAmount")
                         .HasColumnType("decimal(18,2)");

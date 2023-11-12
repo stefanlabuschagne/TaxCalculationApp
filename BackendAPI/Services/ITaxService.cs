@@ -2,6 +2,6 @@
 {
 	public interface ITaxService
 	{
-		public bool CalculateTax();
+		public bool CalculateTax(decimal TaxableAmount, string PostalCode);
 	}
 }

@@ -5,6 +5,6 @@ namespace BackendAPI.Services.Factory
 {
     public interface ITaxCalculatorFactory
 	{
-		ITaxCalculation CalcuateTaxRateBasedOnType(TaxType entityType);
+		ITaxCalculation CalcuateTaxRateBasedOnType(string entityType);
 	}
 }

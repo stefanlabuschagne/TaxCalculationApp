@@ -2,17 +2,10 @@
 
 namespace BackendAPI.Models.DTO.Request
 {
-    public class TaxCalculationRequest
-    {
-        decimal Amount { get; set; }
+  public class TaxCalculationRequest
+  {
+    public decimal Amount { get; set; }
 
-        TaxType TaxType { get; set; }
-    }
-
-    public enum TaxType
-    {
-        Flatrate = 0 ,
-        FlatValue = 1,
-        Progressive =2 
-    }
+    public string PostalCode { get; set; }
+  }
 }

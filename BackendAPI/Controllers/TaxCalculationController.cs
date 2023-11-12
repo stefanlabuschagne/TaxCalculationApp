@@ -23,12 +23,16 @@ namespace BackendAPI.Controllers
 		}
 
 		[HttpPost(Name = "CalculateTax")]
-		public TaxCalcultionResponse HttpPost([FromBody] TaxCalculationRequest taxCalculationRequest)
+		public IActionResult HttpPost([FromBody] TaxCalculationRequest taxCalculationRequest)
 		{
-			_taxService.CalculateTax();
-			// Calculate Tax
+			if (taxCalculationRequest == null)  
+				return new BadRequestResult(); 
+
+			_taxService.CalculateTax(taxCalculationRequest.Amount,taxCalculationRequest.PostalCode);
+
 			//_unitofwork.TaxRecord.Add(new Domain.Entities.TaxRecord() { TaxableAmount=100000, TaxType="Progressive" });
-			return new TaxCalcultionResponse(); 
+
+			return new OkResult(); 
 		}
 
 		[HttpGet(Name = "GetAllRecords")]

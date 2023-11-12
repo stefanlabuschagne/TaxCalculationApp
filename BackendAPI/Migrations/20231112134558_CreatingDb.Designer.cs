@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendAPI.Migrations
 {
     [DbContext(typeof(TaxDbContext))]
-    [Migration("20231112122528_CreatingDb")]
+    [Migration("20231112134558_CreatingDb")]
     partial class CreatingDb
     {
         /// <inheritdoc />
@@ -33,12 +33,12 @@ namespace BackendAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("TaxCalculated")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("TaxType")
+                    b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TaxCalculated")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TaxableAmount")
                         .HasColumnType("decimal(18,2)");
