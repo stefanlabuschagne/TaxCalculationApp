@@ -2,6 +2,6 @@
 {
 	public interface ITaxService
 	{
-		decimal CalculateTax();
+		public decimal CalculateTax();
 	}
 }

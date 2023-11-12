@@ -1,25 +1,24 @@
-﻿using BackendAPI.Services.Factory;
+﻿using BackendAPI.Data.Context;
+using BackendAPI.Services.Factory;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace BackendAPI.Services
 {
-	// Repository pattern
-	// for the thin controller
-	public class TaxService : ITaxService
+    // Repository pattern
+    // for the thin controller
+    public class TaxService : ITaxService
 	{
-		decimal _taxableamount;
-		string _taxtype;
-		ITaxCalculatorFactory _taxCalculatorFactory;
-		DbContext _dbContext;
 
-		public TaxService(decimal taxableAmount, string taxType, ITaxCalculatorFactory tcf, DbContext dbc )
+		public decimal _taxableamount;
+		public string _taxtype;
+		public ITaxCalculatorFactory _taxCalculatorFactory;
+		public TaxDbContext _dbContext;
+
+		public TaxService()
 		{
-			_taxableamount = taxableAmount;
-			_taxtype = taxType;
-			_taxCalculatorFactory = tcf;
-			_dbContext = dbc;
+			// _dbContext = new TaxDbContext();
 		}
 
 		public decimal CalculateTax()
@@ -33,7 +32,10 @@ namespace BackendAPI.Services
 			//_dbContext.SaveChangesAsync();
 
 			// Inject EF to update the Database Here
-			return 1000; //  b;
+
+			decimal d = 1000;
+
+			return d; //  b;
 		}
 	}
 }

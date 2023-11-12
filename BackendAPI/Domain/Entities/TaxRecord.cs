@@ -1,7 +1,11 @@
-﻿namespace BackendAPI.Data.Domain
+﻿using System.ComponentModel.DataAnnotations;
+using BackendAPI.Domain.Repository;
+
+namespace BackendAPI.Domain.Entities
 {
-	public class TaxRecord
+    public class TaxRecord
 	{
+		[Key]
 		public int Id { get; set; }
 
 		public DateTime TimeCalculated { get; set; }

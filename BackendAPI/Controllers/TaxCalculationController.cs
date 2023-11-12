@@ -21,12 +21,7 @@ namespace BackendAPI.Controllers
 		[HttpPost(Name = "CalculateTax")]
 		public TaxCalcultionResponse HttpPost([FromBody] TaxCalculationRequest taxCalculationRequest)
 		{
-			// call the Repository Service that was injected into the 
-
-			// _taxService.CalculateTax();
-
 			return new TaxCalcultionResponse(); 
-
 		}
 	}
 }
