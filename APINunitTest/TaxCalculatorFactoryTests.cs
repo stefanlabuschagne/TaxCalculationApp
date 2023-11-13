@@ -2,7 +2,6 @@
 
 namespace APINunitTest
 {
-
 	[TestFixture]
 	public class TaxCalculatorFactoryTests
 	{

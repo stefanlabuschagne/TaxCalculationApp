@@ -26,7 +26,7 @@ namespace APINunitTest
 		[Ignore("Reason for ignoring this test")]
 		public void Test1()
 		{
-      var result = _taxService.CalculateTax(6666666,"7000");
+      var result = _taxService.CalculateTax(6666666, "7000");
 		}
   }
 }
