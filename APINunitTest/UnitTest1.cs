@@ -48,19 +48,19 @@ namespace APINunitTest
 		}
 
 		[Test]
-		public void should_use_flatvalue_taxing()
+		public void should_use_flatvalue_taxing_for_more_than_200000()
 		{
 			var taxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType("A100");
-			taxCalculatorObjectFromFactory.TaxableAmount = 666667;
+			taxCalculatorObjectFromFactory.TaxableAmount = 666667m;
 			decimal result = taxCalculatorObjectFromFactory.CalculateTax();
 
 			Assert.IsTrue(result == 10000m);
 		}
 
-		public void should_use_flatvalue_taxing_too()
+		public void should_use_flatvalue_taxing_for_less_than_200000_at_5Percent()
 		{
 			var taxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType("A100");
-			taxCalculatorObjectFromFactory.TaxableAmount = 100000;
+			taxCalculatorObjectFromFactory.TaxableAmount = 100000m;
 			decimal result = taxCalculatorObjectFromFactory.CalculateTax();
 
 			Assert.IsTrue(result == 5000m);
@@ -70,7 +70,7 @@ namespace APINunitTest
 		public void should_use_progressive_taxing()
 		{
 			var taxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType("7441");
-			taxCalculatorObjectFromFactory.TaxableAmount = 66776667;
+			taxCalculatorObjectFromFactory.TaxableAmount = 66776667m;
 			decimal result = taxCalculatorObjectFromFactory.CalculateTax();
 
 			Assert.IsTrue(result == 23349516.95m);
@@ -80,7 +80,7 @@ namespace APINunitTest
 		public void should_use_progressive_taxing_too()
 		{
 			var taxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType("1000");
-			taxCalculatorObjectFromFactory.TaxableAmount = 66776667;
+			taxCalculatorObjectFromFactory.TaxableAmount = 66776667m;
 			decimal result = taxCalculatorObjectFromFactory.CalculateTax();
 
 			Assert.IsTrue(result == 23349516.95m);
@@ -90,7 +90,7 @@ namespace APINunitTest
 		public void should_use_flatrate_taxing()
 		{
 			var taxCalculatorObjectFromFactory = _taxCalculatorFactory.CalcuateTaxRateBasedOnType("7000");
-			taxCalculatorObjectFromFactory.TaxableAmount = 66776667;
+			taxCalculatorObjectFromFactory.TaxableAmount = 66776667m;
 			decimal result = taxCalculatorObjectFromFactory.CalculateTax();
 
 			Assert.IsTrue(result == 11685916.725m);
