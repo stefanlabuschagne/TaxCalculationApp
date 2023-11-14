@@ -1,3 +1,4 @@
+using RazorFrontEndProject.Configuration;
 using RazorFrontEndProject.Services;
 
 namespace RazorFrontEndProject
@@ -13,6 +14,7 @@ namespace RazorFrontEndProject
 
 			builder.Services.AddSingleton<IApiService, ApiService>();
 			builder.Services.AddHttpClient<IApiService, ApiService>();
+			builder.Services.Configure<ApiServiceConfig>(builder.Configuration.GetSection(key: "ApiServiceConfig"));
 
 			var app = builder.Build();
 

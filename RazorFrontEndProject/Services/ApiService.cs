@@ -1,24 +1,30 @@
 ﻿using System.Text;
 using System.Text.Json;
+using Microsoft.Extensions.Options;
+using RazorFrontEndProject.Configuration;
 using RazorFrontEndProject.Models;
 
 namespace RazorFrontEndProject.Services
 {
   public class ApiService : IApiService
   {
-		private HttpClient _httpClient;
+		private readonly HttpClient _httpClient;
+		private readonly ApiServiceConfig _config;
 
-		public ApiService(HttpClient httpClient)
-		{
-			_httpClient = httpClient;
-		}
+		public ApiService(
+			HttpClient httpClient,
+			IOptions<ApiServiceConfig> config)
+				{
+					_httpClient = httpClient;
+					_config = config.Value;
+				}
 
 		public bool TaxCalculation(ITaxInformation taxInfoModel)
     {
 			using (_httpClient)
 			{
-				// Set the base address of the API
-				_httpClient.BaseAddress = new Uri("http://localhost:5015");
+				// Set the base address of the API as specified in Appsettings.Json
+				// _httpClient.BaseAddress = new Uri(_config.Url);
 
 				try
 				{
@@ -28,7 +34,7 @@ namespace RazorFrontEndProject.Services
 						"application/json");
 
 					// Make a POST request
-					HttpResponseMessage response = _httpClient.PostAsync("/TaxCalculation", taxInfoModelJson).Result;
+					HttpResponseMessage response = _httpClient.PostAsync(string.Concat(_config.Url.ToString(), "/TaxCalculation"), taxInfoModelJson).Result;
 
 					// Check if the response is successful
 					if (response.IsSuccessStatusCode)
