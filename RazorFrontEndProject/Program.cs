@@ -12,6 +12,7 @@ namespace RazorFrontEndProject
 			builder.Services.AddRazorPages();
 
 			builder.Services.AddSingleton<IApiService, ApiService>();
+			builder.Services.AddHttpClient<IApiService, ApiService>();
 
 			var app = builder.Build();
 

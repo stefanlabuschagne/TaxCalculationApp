@@ -4,6 +4,6 @@ namespace RazorFrontEndProject.Services
 {
   public interface IApiService
   {
-    bool TaxCalculation(TaxInformation taxInfoModel);
+    bool TaxCalculation(ITaxInformation taxInfoModel);
   }
 }
