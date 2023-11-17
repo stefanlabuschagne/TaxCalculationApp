@@ -1,4 +1,4 @@
-This is a Tax CAlculation App Written in C#
+This is a Tax Calculation App Written in C#
 
 It has a Front-end that accepts a Postal Code and Annual Taxable income
 The front end calls a backend API that calculates the tax and stores the values in a SQLExpress database table.
